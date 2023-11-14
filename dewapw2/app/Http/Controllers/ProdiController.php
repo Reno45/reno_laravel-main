@@ -35,7 +35,8 @@ class ProdiController extends Controller
 
         // validasi data input
         $validasi = $request->validate([
-            "nama"=> "required|unique:prodi",
+            "nama"=> "required|unique:prodis",
+            "fakulitas_id"=> "required",
         ]);
         
         //simpan data ke table fakultas

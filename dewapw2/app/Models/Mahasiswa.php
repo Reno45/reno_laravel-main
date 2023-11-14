@@ -11,6 +11,8 @@ class Mahasiswa extends Model
     use HasFactory, HasUlids;
     protected $table = 'mahasiswas';
 
+    protected $fillable = ['npm', 'nama' , 'tmpt_lahir', 'tgl_lahir', 'foto','prodi_id'];
+
     public function prodi()
     {
         return $this->belongsTo(Prodi::class, 'prodi_id');

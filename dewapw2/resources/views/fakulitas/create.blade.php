@@ -8,7 +8,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                 <h4 class="card-title">Tambah Fakultas</h4>
+                 <h4 class="card-title">Tambah Fakulitas</h4>
                     <p class="card-description">
                         Ini Adalah Formulir Tambah Fakultas MDP 
                     </p>
