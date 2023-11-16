@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -21,7 +22,8 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        //
+        $prodi = Prodi::all();
+        return view("mahasiswa.create")->with("prodi", $prodi);
     }
 
     /**
@@ -30,13 +32,13 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         $validasi = $request->validate([
-            "npm"=> "required|unique:mahasiswa",
-            "nama"=> "required",
-            "tmpt_lahir"=> "required",
-            "tgl_lahir"=> "required",
-            "foto"=> "required",
-            "prodi_id"=> "required|image",
-        ]);   
+            "npm" => "required|unique:mahasiswas",
+            "nama" => "required",
+            "tmpt_lahir" => "required",
+            "tgl_lahir" => "required",
+            "foto" => "required|image",
+            "prodi_id" => "required",
+        ]); 
         // ambil extensi file foto
         $ext = $request->foto->getClientOriginalExtension();
         // rename file foto menjadi npm.extensi (contoh : 2226250098.jpg
@@ -61,7 +63,8 @@ class MahasiswaController extends Controller
      */
     public function edit(Mahasiswa $mahasiswa)
     {
-        //
+         $prodi = Prodi::all();
+         return view("mahasiswa.edit")->with("mahasiswa", $mahasiswa)->with("prodi", $prodi);
     }
 
     /**
@@ -77,6 +80,7 @@ class MahasiswaController extends Controller
      */
     public function destroy(Mahasiswa $mahasiswa)
     {
-        //
+        $mahasiswa->delete();
+        return redirect()->route("mahasiswa.index")->with("success","Berhasil Dihapus");
     }
 }

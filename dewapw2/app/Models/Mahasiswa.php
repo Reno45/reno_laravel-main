@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Mahasiswa extends Model
 {
-    use HasFactory, HasUlids;
+    use HasFactory, HasUuids;
     protected $table = 'mahasiswas';
 
     protected $fillable = ['npm', 'nama' , 'tmpt_lahir', 'tgl_lahir', 'foto','prodi_id'];
